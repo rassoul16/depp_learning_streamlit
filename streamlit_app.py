@@ -74,11 +74,9 @@ def creer_graphique_proba(probas: np.ndarray) -> plt.Figure:
     return fig
 
 
-# ═══════════════════════════════════════════════════════════════════════════
 # Interface Streamlit
-# ═══════════════════════════════════════════════════════════════════════════
 
-# ── En-tête ─────────────────────────────────────────────────────────────────
+#  En-tête 
 st.title("🌸 Classificateur de Fleurs")
 st.markdown(
     "Téléversez une photo de fleur pour identifier sa **classe**  \n"
@@ -86,7 +84,7 @@ st.markdown(
 )
 st.divider()
 
-# ── Barre latérale : informations ───────────────────────────────────────────
+#  Barre latérale : informations 
 with st.sidebar:
     st.header("ℹ️ Informations")
     st.markdown("**Modèle :** ResNet50 (Transfer Learning)")
@@ -97,14 +95,14 @@ with st.sidebar:
         st.markdown(f"  {EMOJIS[cls]} {cls}")
     st.divider()
 
-# ── Chargement du modèle ─────────────────────────────────────────────────────
+#  Chargement du modèle 
 with st.spinner("Chargement du modèle..."):
     model = charger_modele()
 st.success("Modèle chargé avec succès !")
 
 st.divider()
 
-# ── Zone de téléversement ────────────────────────────────────────────────────
+#  Zone de téléversement 
 st.subheader("📤 Téléverser une image")
 fichier = st.file_uploader(
     "Choisissez une image (JPG, JPEG, PNG)",
@@ -112,7 +110,7 @@ fichier = st.file_uploader(
     help="L'image sera redimensionnée en 224×224 pour le modèle."
 )
 
-# ── Traitement et prédiction ─────────────────────────────────────────────────
+#  Traitement et prédiction 
 if fichier is not None:
 
     image = Image.open(fichier)
